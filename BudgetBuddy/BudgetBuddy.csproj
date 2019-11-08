@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExpensesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -182,8 +183,17 @@
     <Compile Include="Migrations\201911081554060_init.Designer.cs">
       <DependentUpon>201911081554060_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911081613309_email.cs" />
+    <Compile Include="Migrations\201911081613309_email.Designer.cs">
+      <DependentUpon>201911081613309_email.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081714291_expense.cs" />
+    <Compile Include="Migrations\201911081714291_expense.Designer.cs">
+      <DependentUpon>201911081714291_expense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Expense.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
@@ -246,10 +256,19 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Expenses\Create.cshtml" />
+    <Content Include="Views\Expenses\Edit.cshtml" />
+    <Content Include="Views\Expenses\Details.cshtml" />
+    <Content Include="Views\Expenses\Index.cshtml" />
+    <Content Include="Views\Expenses\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -270,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911081554060_init.resx">
       <DependentUpon>201911081554060_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081613309_email.resx">
+      <DependentUpon>201911081613309_email.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081714291_expense.resx">
+      <DependentUpon>201911081714291_expense.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

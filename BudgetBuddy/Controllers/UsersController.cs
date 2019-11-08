@@ -71,6 +71,7 @@ namespace BudgetBuddy.Controllers
                 User editedUser = context.Users.Where(c => c.Id == id).FirstOrDefault();
                 editedUser.firstName = user.firstName;
                 editedUser.lastName = user.lastName;
+                editedUser.emailAddress = user.emailAddress;
                 editedUser.streetAddress = user.streetAddress;
                 editedUser.city = user.city;
                 editedUser.stateCode = user.stateCode;

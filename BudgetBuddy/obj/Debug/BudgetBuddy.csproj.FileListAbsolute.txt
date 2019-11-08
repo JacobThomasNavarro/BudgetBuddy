@@ -212,3 +212,5 @@ C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.cs
 C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.dll
 C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.pdb
 C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.Migrations.init.resources
+C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.Migrations.email.resources
+C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.Migrations.expense.resources

@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace BudgetBuddy.Models
+{
+    public class Expense
+    {
+        [Key]
+        public int expenseId { get; set; }
+
+        [Required]
+        [Display(Name = "Bill Name")]
+        public string billName { get; set; }
+
+        [Required]
+        [Display(Name = "Bill Price")]
+        public int billPrice { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Purchased")]
+        public DateTime purchaseDate { get; set; }
+    }
+}
