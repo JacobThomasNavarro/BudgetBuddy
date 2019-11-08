@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -16,6 +17,11 @@ namespace BudgetBuddy.Models
         [Required]
         [Display(Name = "Last Name")]
         public string lastName { get; set; }
+
+        [Required]
+        [Display(Name = "Email Address")]
+        public string emailAddress { get; set; }
+
         [Required]
         [Display(Name = "Street Address")]
         public string streetAddress { get; set; }
@@ -28,5 +34,12 @@ namespace BudgetBuddy.Models
         [Required]
         [Display(Name = "ZIP Code")]
         public int zipcode { get; set; }
+
+        
+
+        [ForeignKey("Expense")]
+        public int? expenseId { get; set; }
+        public Expense Expense { get; set; }
+        
     }
 }
