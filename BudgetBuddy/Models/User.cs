@@ -35,11 +35,11 @@ namespace BudgetBuddy.Models
         [Display(Name = "ZIP Code")]
         public int zipcode { get; set; }
 
-        
 
-        [ForeignKey("Expense")]
-        public int? expenseId { get; set; }
-        public Expense Expense { get; set; }
-        
+
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
     }
 }

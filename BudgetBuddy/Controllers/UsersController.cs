@@ -1,4 +1,5 @@
 ﻿using BudgetBuddy.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,8 @@ namespace BudgetBuddy.Controllers
         {
             try
             {
+                string id = User.Identity.GetUserId();
+                user.ApplicationId = id;
                 // TODO: Add insert logic here
                 context.Users.Add(user);
                 

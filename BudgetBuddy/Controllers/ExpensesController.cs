@@ -1,4 +1,5 @@
 ﻿using BudgetBuddy.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,11 @@ namespace BudgetBuddy.Controllers
             {
                 // TODO: Add insert logic here
                 context.Expenses.Add(expense);
+                context.SaveChanges();
+
+                string id = User.Identity.GetUserId();
+                var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+                expense.Id = user.Id;
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
