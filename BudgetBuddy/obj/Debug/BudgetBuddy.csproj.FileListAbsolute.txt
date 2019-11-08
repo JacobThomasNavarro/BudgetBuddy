@@ -214,3 +214,4 @@ C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.pd
 C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.Migrations.init.resources
 C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.Migrations.email.resources
 C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.Migrations.expense.resources
+C:\Users\danie\OneDrive\Desktop\BudgetBuddy\BudgetBuddy\obj\Debug\BudgetBuddy.Migrations.nullablefk.resources

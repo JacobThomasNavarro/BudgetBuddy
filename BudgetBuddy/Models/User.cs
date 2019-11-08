@@ -35,10 +35,10 @@ namespace BudgetBuddy.Models
         [Display(Name = "ZIP Code")]
         public int zipcode { get; set; }
 
-        public virtual ICollection<Expense> expenses { get; set; }
+        
 
         [ForeignKey("Expense")]
-        public int expenseId { get; set; }
+        public int? expenseId { get; set; }
         public Expense Expense { get; set; }
         
     }

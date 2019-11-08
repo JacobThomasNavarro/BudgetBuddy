@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201911081714291_expense.Designer.cs">
       <DependentUpon>201911081714291_expense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911081751507_nullablefk.cs" />
+    <Compile Include="Migrations\201911081751507_nullablefk.Designer.cs">
+      <DependentUpon>201911081751507_nullablefk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Expense.cs" />
@@ -295,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911081714291_expense.resx">
       <DependentUpon>201911081714291_expense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081751507_nullablefk.resx">
+      <DependentUpon>201911081751507_nullablefk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
