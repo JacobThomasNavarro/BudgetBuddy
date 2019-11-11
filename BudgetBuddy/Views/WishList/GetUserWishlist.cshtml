@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BudgetBuddy.Models.WishList>
+
+@{
+    ViewBag.Title = "GetUserWishlist";
+}
+
+<h2>My Wishlist</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.wishListName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wishListPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.wishListName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wishListPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.wishListId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.wishListId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.wishListId })
+        </td>
+    </tr>
+}
+
+</table>
+<p> @Html.ActionLink("Back To Details", "Index", "Home")</p>

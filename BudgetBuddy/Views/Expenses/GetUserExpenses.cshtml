@@ -1,10 +1,10 @@
-﻿@model IEnumerable<BudgetBuddy.Models.Expense>
+﻿@model BudgetBuddy.Models.UserExpenseViewModel
 
 @{
     ViewBag.Title = "GetUserExpenses";
 }
 
-<h2>GetUserExpenses</h2>
+<h2>My Expenses</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.billName)
+            @Html.DisplayNameFor(model => model.Expenses[0].billName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.billPrice)
+            @Html.DisplayNameFor(model => model.Expenses[0].billPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.purchaseDate)
+            @Html.DisplayNameFor(model => model.Expenses[0].purchaseDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.recurringExpense)
+            @Html.DisplayNameFor(model => model.Expenses[0].recurringExpense)
         </th>
         <th>
             <p>Percentage</p>
@@ -29,7 +29,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Expenses) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.billName)
@@ -56,3 +56,9 @@
 }
 
 </table>
+}
+<script>
+    
+</script>
+<p>Total Amount Of Expenses:  @Model.TotalExpenses </p>
+<p> @Html.ActionLink("Back To Details", "Index", "Home")</p>

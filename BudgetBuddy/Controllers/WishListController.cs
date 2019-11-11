@@ -21,7 +21,15 @@ namespace BudgetBuddy.Controllers
         {
             return View(context.WishLists.ToList());
         }
+        public ActionResult GetUserWishlist()
+        {
+            string id = User.Identity.GetUserId();
+            var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+            var wishlist = context.WishLists.Where(e => e.Id == user.Id).ToList();
 
+
+            return View(wishlist);
+        }
         // GET: WishLists/Details/5
         public ActionResult Details(int id)
         {

@@ -11,11 +11,13 @@ namespace BudgetBuddy.Controllers
     public class ExpensesController : Controller
     {
         ApplicationDbContext context;
-
+        
         public ExpensesController()
         {
             context = new ApplicationDbContext();
         }
+
+       
         // GET: Expenses
         public ActionResult Index()
         {
@@ -23,12 +25,17 @@ namespace BudgetBuddy.Controllers
         }
         public ActionResult GetUserExpenses()
         {
+            UserExpenseViewModel userExpenses = new UserExpenseViewModel() {TotalExpenses = 0 };
+       
             string id = User.Identity.GetUserId();
             var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
-            var expenses = context.Expenses.Where(e => e.Id == user.Id).ToList();
+            userExpenses.Expenses = context.Expenses.Where(e => e.Id == user.Id).ToList();
+            foreach (Expense item in userExpenses.Expenses)
+            {
+                userExpenses.TotalExpenses += item.billPrice;
+            }
             
-            
-            return View(expenses);
+            return View(userExpenses);
         }
         // GET: Expenses/Details/5
         public ActionResult Details(int id)

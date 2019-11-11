@@ -40,6 +40,8 @@ namespace BudgetBuddy.Models
         [Display(Name = "Monthly Income")]
         public decimal monthlyIncome { get; set; }
 
+        
+
 
 
         [ForeignKey("ApplicationUser")]
