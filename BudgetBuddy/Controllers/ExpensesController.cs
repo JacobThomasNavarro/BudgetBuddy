@@ -21,12 +21,20 @@ namespace BudgetBuddy.Controllers
         {
             return View(context.Expenses.ToList());
         }
-
+        public ActionResult GetUserExpenses()
+        {
+            string id = User.Identity.GetUserId();
+            var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+            var expenses = context.Expenses.Where(e => e.Id == user.Id).ToList();
+            
+            
+            return View(expenses);
+        }
         // GET: Expenses/Details/5
         public ActionResult Details(int id)
         {
             Expense expense = context.Expenses.Where(e => e.expenseId == id).FirstOrDefault();
-            return View();
+            return View(expense);
         }
 
         // GET: Expenses/Create
@@ -50,7 +58,7 @@ namespace BudgetBuddy.Controllers
                 var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
                 expense.Id = user.Id;
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
@@ -62,7 +70,7 @@ namespace BudgetBuddy.Controllers
         public ActionResult Edit(int id)
         {
             Expense expense = context.Expenses.Where(e => e.expenseId == id).FirstOrDefault();
-            return View();
+            return View(expense);
         }
 
         // POST: Expenses/Edit/5
@@ -89,7 +97,7 @@ namespace BudgetBuddy.Controllers
         public ActionResult Delete(int id)
         {
             Expense expense = context.Expenses.Where(e => e.expenseId == id).FirstOrDefault();
-            return View();
+            return View(expense);
         }
 
         // POST: Expenses/Delete/5

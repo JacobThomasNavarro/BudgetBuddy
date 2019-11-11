@@ -79,6 +79,7 @@ namespace BudgetBuddy.Controllers
                 editedUser.city = user.city;
                 editedUser.stateCode = user.stateCode;
                 editedUser.zipcode = user.zipcode;
+                editedUser.monthlyIncome = user.monthlyIncome;
                
                 context.SaveChanges();
 
@@ -94,7 +95,7 @@ namespace BudgetBuddy.Controllers
         public ActionResult Delete(int id)
         {
             User user = context.Users.Where(u => u.Id == id).FirstOrDefault();
-            return View();
+            return View(user);
         }
 
         // POST: Users/Delete/5

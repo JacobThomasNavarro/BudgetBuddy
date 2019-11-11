@@ -184,6 +184,22 @@
     <Compile Include="Migrations\201911111543198_nullable.designer.cs">
       <DependentUpon>201911111543198_nullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911111551414_currency.cs" />
+    <Compile Include="Migrations\201911111551414_currency.designer.cs">
+      <DependentUpon>201911111551414_currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911111607354_reccuring.cs" />
+    <Compile Include="Migrations\201911111607354_reccuring.designer.cs">
+      <DependentUpon>201911111607354_reccuring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911111706269_monthlyincome.cs" />
+    <Compile Include="Migrations\201911111706269_monthlyincome.designer.cs">
+      <DependentUpon>201911111706269_monthlyincome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911111710007_monthlyspelling.cs" />
+    <Compile Include="Migrations\201911111710007_monthlyspelling.designer.cs">
+      <DependentUpon>201911111710007_monthlyspelling.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Expense.cs" />
@@ -254,11 +270,12 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Expenses\Create.cshtml" />
-    <Content Include="Views\Expenses\Edit.cshtml" />
-    <Content Include="Views\Expenses\Details.cshtml" />
     <Content Include="Views\Expenses\Index.cshtml" />
+    <Content Include="Views\Expenses\Create.cshtml" />
+    <Content Include="Views\Expenses\Details.cshtml" />
+    <Content Include="Views\Expenses\Edit.cshtml" />
     <Content Include="Views\Expenses\Delete.cshtml" />
+    <Content Include="Views\Expenses\GetUserExpenses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -282,6 +299,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911111543198_nullable.resx">
       <DependentUpon>201911111543198_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911111551414_currency.resx">
+      <DependentUpon>201911111551414_currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911111607354_reccuring.resx">
+      <DependentUpon>201911111607354_reccuring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911111706269_monthlyincome.resx">
+      <DependentUpon>201911111706269_monthlyincome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911111710007_monthlyspelling.resx">
+      <DependentUpon>201911111710007_monthlyspelling.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

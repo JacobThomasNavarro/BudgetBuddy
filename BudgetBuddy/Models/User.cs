@@ -35,6 +35,11 @@ namespace BudgetBuddy.Models
         [Display(Name = "ZIP Code")]
         public int zipcode { get; set; }
 
+        [Required]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Monthly Income")]
+        public decimal monthlyIncome { get; set; }
+
 
 
         [ForeignKey("ApplicationUser")]

@@ -32,40 +32,46 @@
         <th>
             @Html.DisplayNameFor(model => model.zipcode)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monthlyIncome)
+        </th>
         
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.emailAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.streetAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stateCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.zipcode)
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.firstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.lastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.emailAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.streetAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.city)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.stateCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.zipcode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.monthlyIncome)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>

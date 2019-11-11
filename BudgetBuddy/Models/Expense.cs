@@ -17,13 +17,17 @@ namespace BudgetBuddy.Models
         public string billName { get; set; }
 
         [Required]
+        [DataType(DataType.Currency)]
         [Display(Name = "Bill Price")]
-        public int billPrice { get; set; }
+        public decimal billPrice { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Purchased")]
         public DateTime purchaseDate { get; set; }
+
+        [Display(Name = "Recurring Expense")]
+        public bool recurringExpense { get; set; }
 
         [ForeignKey("User")]
         public int? Id { get; set; }
