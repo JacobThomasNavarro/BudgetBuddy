@@ -26,7 +26,7 @@ namespace BudgetBuddy.Models
         public DateTime purchaseDate { get; set; }
 
         [ForeignKey("User")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public User User { get; set; }
     }
 }
