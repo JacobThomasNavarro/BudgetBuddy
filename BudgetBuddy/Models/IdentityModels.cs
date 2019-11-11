@@ -22,6 +22,7 @@ namespace BudgetBuddy.Models
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Expense> Expenses { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

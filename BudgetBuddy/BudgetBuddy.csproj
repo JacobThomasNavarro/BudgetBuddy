@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,21 +185,19 @@
     <Compile Include="Migrations\201911111543198_nullable.designer.cs">
       <DependentUpon>201911111543198_nullable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911111551414_currency.cs" />
-    <Compile Include="Migrations\201911111551414_currency.designer.cs">
-      <DependentUpon>201911111551414_currency.cs</DependentUpon>
+
+    <Compile Include="Migrations\201911111651479_WishListModel.cs" />
+    <Compile Include="Migrations\201911111651479_WishListModel.designer.cs">
+      <DependentUpon>201911111651479_WishListModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911111607354_reccuring.cs" />
-    <Compile Include="Migrations\201911111607354_reccuring.designer.cs">
-      <DependentUpon>201911111607354_reccuring.cs</DependentUpon>
+    <Compile Include="Migrations\201911111729476_UpdatedWishListModel.cs" />
+    <Compile Include="Migrations\201911111729476_UpdatedWishListModel.designer.cs">
+      <DependentUpon>201911111729476_UpdatedWishListModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911111706269_monthlyincome.cs" />
-    <Compile Include="Migrations\201911111706269_monthlyincome.designer.cs">
-      <DependentUpon>201911111706269_monthlyincome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911111710007_monthlyspelling.cs" />
-    <Compile Include="Migrations\201911111710007_monthlyspelling.designer.cs">
-      <DependentUpon>201911111710007_monthlyspelling.cs</DependentUpon>
+    <Compile Include="Migrations\201911111929474_WishListPriceCurrency.cs" />
+    <Compile Include="Migrations\201911111929474_WishListPriceCurrency.designer.cs">
+      <DependentUpon>201911111929474_WishListPriceCurrency.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -206,6 +205,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\WishList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,7 +275,13 @@
     <Content Include="Views\Expenses\Details.cshtml" />
     <Content Include="Views\Expenses\Edit.cshtml" />
     <Content Include="Views\Expenses\Delete.cshtml" />
-    <Content Include="Views\Expenses\GetUserExpenses.cshtml" />
+
+    <Content Include="Views\WishList\Create.cshtml" />
+    <Content Include="Views\WishList\Delete.cshtml" />
+    <Content Include="Views\WishList\Details.cshtml" />
+    <Content Include="Views\WishList\Edit.cshtml" />
+    <Content Include="Views\WishList\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,17 +306,16 @@
     <EmbeddedResource Include="Migrations\201911111543198_nullable.resx">
       <DependentUpon>201911111543198_nullable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911111551414_currency.resx">
-      <DependentUpon>201911111551414_currency.cs</DependentUpon>
+
+    <EmbeddedResource Include="Migrations\201911111651479_WishListModel.resx">
+      <DependentUpon>201911111651479_WishListModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911111607354_reccuring.resx">
-      <DependentUpon>201911111607354_reccuring.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911111729476_UpdatedWishListModel.resx">
+      <DependentUpon>201911111729476_UpdatedWishListModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911111706269_monthlyincome.resx">
-      <DependentUpon>201911111706269_monthlyincome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911111710007_monthlyspelling.resx">
-      <DependentUpon>201911111710007_monthlyspelling.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911111929474_WishListPriceCurrency.resx">
+      <DependentUpon>201911111929474_WishListPriceCurrency.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
