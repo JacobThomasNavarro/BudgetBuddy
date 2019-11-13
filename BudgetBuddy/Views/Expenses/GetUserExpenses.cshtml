@@ -1,64 +1,54 @@
 ﻿@model BudgetBuddy.Models.UserExpenseViewModel
-
+@using BudgetBuddy.Models
 @{
     ViewBag.Title = "GetUserExpenses";
+
+    //Expense firstExpense = Model.FirstOrDefault();
 }
 
-<h2>My Expenses</h2>
+<table>
+    <thead>
+        <tr>
+            <th>
+                <label>@Html.DisplayNameFor(model => model.Expenses[0].billName)</label>
+            </th>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Expenses[0].billName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Expenses[0].billPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Expenses[0].purchaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Expenses[0].recurringExpense)
-        </th>
-        <th>
-            <p>Percentage</p>
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model.Expenses) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.billName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.billPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.purchaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recurringExpense)
-        </td>
-        <td>
-            <input type="text" id="percentage" name="id" placeholder="percentage" />
-            <input type="submit" name="Submit" value="Reset" />
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.expenseId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.expenseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.expenseId })
-        </td>
-    </tr>
-}
-
+            <th>
+                <label>@Html.DisplayNameFor(model => model.Expenses[0].billPrice)</label>
+            </th>
+            <th>
+                <label>Calculate Percentage</label>
+            </th>
+            <th>
+                <label>Result</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody id="expenseTableBody">
+        @*JQUERY appended here*@
+    </tbody>
 </table>
-}
+
+@Scripts.Render("~/bundles/jquery")
 <script>
+    @foreach (Expense expense in Model.Expenses)
+    {
+        <text>
+        $("#expenseTableBody").append("<tr><td>@expense.billName</td><td id='price" + @expense.expenseId + "'>@expense.billPrice</td><td><input id='@expense.expenseId' type='text'></input></td><td id='result" + @expense.expenseId +"'></td></tr>");
+        </text>
+
+    }
+
+    $("input[type=text]").change(function () {
+        
+        let percent = $(this).val() / 100;
+        
+        if (percent !== NaN) {
+            
+            $("#result" + this.id).html($("#price" + this.id).html() * percent);
+        }
+    });
+
     
+
 </script>
-<p>Total Amount Of Expenses:  @Model.TotalExpenses </p>
-<p> @Html.ActionLink("Back To Details", "Index", "Home")</p>
