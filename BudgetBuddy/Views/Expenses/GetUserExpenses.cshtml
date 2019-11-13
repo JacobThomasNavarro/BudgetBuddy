@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "GetUserExpenses";
 
-    //Expense firstExpense = Model.FirstOrDefault();
-}
 
+}
+<h2>Percentage Calculator</h2>
 <table>
     <thead>
         <tr>
@@ -27,10 +27,21 @@
     <tbody id="expenseTableBody">
         @*JQUERY appended here*@
     </tbody>
+
+
 </table>
+
+
+<p id="totalSavings">
+</p>
+
+
+
 
 @Scripts.Render("~/bundles/jquery")
 <script>
+
+
     @foreach (Expense expense in Model.Expenses)
     {
         <text>
@@ -40,15 +51,74 @@
     }
 
     $("input[type=text]").change(function () {
-        
+
         let percent = $(this).val() / 100;
-        
+
         if (percent !== NaN) {
-            
+
             $("#result" + this.id).html($("#price" + this.id).html() * percent);
         }
     });
-
     
 
+
 </script>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Expenses[0].billName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expenses[0].billPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expenses[0].purchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expenses[0].recurringExpense)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expenses[0].savingPercentage)
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+
+
+
+    @foreach (var item in Model.Expenses)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.billName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.billPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.purchaseDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.recurringExpense)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.savingPercentage)
+    </td>
+
+    <td></td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.expenseId }) |
+        
+        @Html.ActionLink("Delete", "Delete", new { id = item.expenseId })
+    </td>
+</tr>
+    }
+
+</table>
+<p>Total Amount Of Expenses: $ @Model.TotalExpenses </p>
+<p>Total Percentage of Bills Being Saved: $@Model.TotalSavings  </p>
+

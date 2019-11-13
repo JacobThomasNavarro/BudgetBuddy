@@ -23,29 +23,35 @@
         <th>
             @Html.DisplayNameFor(model => model.recurringExpense)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.savingPercentage)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.billName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.billPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.purchaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recurringExpense)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.expenseId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.expenseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.expenseId }) 
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.billName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.billPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.purchaseDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.recurringExpense)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.savingPercentage)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.expenseId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.expenseId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.expenseId })
+    </td>
+</tr>
 }
 
 </table>

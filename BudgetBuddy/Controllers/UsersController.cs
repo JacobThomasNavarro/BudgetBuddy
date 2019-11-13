@@ -108,7 +108,7 @@ namespace BudgetBuddy.Controllers
                 User userToDelete = context.Users.Where(u => u.Id == id).FirstOrDefault();
                 context.Users.Remove(userToDelete);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

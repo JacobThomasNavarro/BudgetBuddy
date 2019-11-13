@@ -9,6 +9,7 @@ namespace BudgetBuddy.Models
     {
        
         public decimal TotalExpenses { get; set; }
+        public decimal? TotalSavings { get; set; }
 
         public List<Expense> Expenses { get; set; }
 

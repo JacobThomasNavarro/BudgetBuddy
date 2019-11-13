@@ -31,6 +31,9 @@ namespace BudgetBuddy.Models
         [Display(Name = "Recurring Expense")]
         public bool recurringExpense { get; set; }
 
+        [Display(Name = "Percentage Saved")]
+        public decimal? savingPercentage { get; set; }
+
         [ForeignKey("User")]
         public int? Id { get; set; }
         public User User { get; set; }

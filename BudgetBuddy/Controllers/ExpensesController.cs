@@ -16,7 +16,7 @@ namespace BudgetBuddy.Controllers
         {
             context = new ApplicationDbContext();
         }
-
+        
        
         // GET: Expenses
         public ActionResult Index()
@@ -25,7 +25,7 @@ namespace BudgetBuddy.Controllers
         }
         public ActionResult GetUserExpenses()
         {
-            UserExpenseViewModel userExpenses = new UserExpenseViewModel() {TotalExpenses = 0 };
+            UserExpenseViewModel userExpenses = new UserExpenseViewModel() { TotalExpenses = 0, TotalSavings = 0 }; 
        
             string id = User.Identity.GetUserId();
             var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
@@ -33,8 +33,15 @@ namespace BudgetBuddy.Controllers
             foreach (Expense item in userExpenses.Expenses)
             {
                 userExpenses.TotalExpenses += item.billPrice;
+                if (item.savingPercentage != null)
+                {
+                    userExpenses.TotalSavings +=  (item.savingPercentage / 100) * item.billPrice;
+                    
+                    
+                }
+                
             }
-            
+            userExpenses.TotalSavings.ToString().Truncate(2);
             return View(userExpenses);
         }
         // GET: Expenses/Details/5
@@ -91,8 +98,10 @@ namespace BudgetBuddy.Controllers
                 expenseToEdit.billName = expense.billName;
                 expenseToEdit.billPrice = expense.billPrice;
                 expenseToEdit.purchaseDate = expense.purchaseDate;
+                expenseToEdit.savingPercentage = expense.savingPercentage;
                 context.SaveChanges();
-                return RedirectToAction("Index");
+               
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

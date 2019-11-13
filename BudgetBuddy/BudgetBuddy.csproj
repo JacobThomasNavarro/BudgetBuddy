@@ -202,6 +202,22 @@
     <Compile Include="Migrations\201911111938217_wishlist.designer.cs">
       <DependentUpon>201911111938217_wishlist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911131935094_percentage.cs" />
+    <Compile Include="Migrations\201911131935094_percentage.designer.cs">
+      <DependentUpon>201911131935094_percentage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911132003092_savings.cs" />
+    <Compile Include="Migrations\201911132003092_savings.designer.cs">
+      <DependentUpon>201911132003092_savings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911132005066_nullableint.cs" />
+    <Compile Include="Migrations\201911132005066_nullableint.designer.cs">
+      <DependentUpon>201911132005066_nullableint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911132029360_savingdecimal.cs" />
+    <Compile Include="Migrations\201911132029360_savingdecimal.designer.cs">
+      <DependentUpon>201911132029360_savingdecimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Expense.cs" />
@@ -212,6 +228,7 @@
     <Compile Include="Models\WishList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="StringExt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -321,6 +338,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911111938217_wishlist.resx">
       <DependentUpon>201911111938217_wishlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911131935094_percentage.resx">
+      <DependentUpon>201911131935094_percentage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911132003092_savings.resx">
+      <DependentUpon>201911132003092_savings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911132005066_nullableint.resx">
+      <DependentUpon>201911132005066_nullableint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911132029360_savingdecimal.resx">
+      <DependentUpon>201911132029360_savingdecimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
