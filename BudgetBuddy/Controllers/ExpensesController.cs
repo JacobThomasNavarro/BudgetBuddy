@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace BudgetBuddy.Controllers
 {
     public class ExpensesController : Controller
@@ -35,13 +36,14 @@ namespace BudgetBuddy.Controllers
                 userExpenses.TotalExpenses += item.billPrice;
                 if (item.savingPercentage != null)
                 {
-                    userExpenses.TotalSavings +=  (item.savingPercentage / 100) * item.billPrice;
-                    
-                    
+                   userExpenses.TotalSavings += (item.savingPercentage / 100) * item.billPrice;
+                   
+                   
                 }
-                
+              
             }
-            userExpenses.TotalSavings.ToString().Truncate(2);
+            userExpenses.TotalSavings = Decimal.Round(userExpenses.TotalSavings.Value, 2);
+
             return View(userExpenses);
         }
         // GET: Expenses/Details/5
