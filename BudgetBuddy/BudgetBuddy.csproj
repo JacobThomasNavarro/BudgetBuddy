@@ -209,6 +209,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Expense.cs" />
+    <Compile Include="Models\GoogleWishListItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
@@ -290,6 +291,7 @@
     <Content Include="Views\WishList\Index.cshtml" />
     <Content Include="Views\Expenses\GetUserExpenses.cshtml" />
     <Content Include="Views\WishList\GetUserWishlist.cshtml" />
+    <Content Include="Views\WishList\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

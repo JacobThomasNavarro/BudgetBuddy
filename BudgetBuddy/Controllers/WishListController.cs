@@ -66,6 +66,37 @@ namespace BudgetBuddy.Controllers
             return View(wishList);
         }
 
+
+        // GET: WishLists/Create
+        public ActionResult Search()
+        {
+            WishList wishList = new WishList();
+            return View();
+        }
+        // POST: WishLists/Create
+        [HttpPost]
+        public async Task<ActionResult> Search(WishList wishList)
+        {
+            string id = User.Identity.GetUserId();
+            var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+            string url = $"https://google-shopping.p.rapidapi.com/search?language=EN&keywords={wishList.wishListName}&country=US";
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(url);
+            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "8fa913baffmshf6dc5b1fa40cc1fp1fdf06jsn365e4c5f0d7f");
+            HttpResponseMessage response = await client.GetAsync(url);
+            string data = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                for (int i = 0; i < data.Length; i++)
+                {
+                    GoogleWishListItem googleWishListItem = JsonConvert.DeserializeObject<GoogleWishListItem>(data);
+                }
+                
+
+
+            }
+            return View();
+        }
         // GET: WishLists/Create
         public ActionResult Create()
         {
@@ -75,26 +106,23 @@ namespace BudgetBuddy.Controllers
 
         // POST: WishLists/Create
         [HttpPost]
-        public async Task<ActionResult> Create(WishList wishList)
+        public ActionResult Create(WishList wishList)
         {
-            string id = User.Identity.GetUserId();
-            var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
-            string url = $"https://google-shopping.p.rapidapi.com/search?language=EN&keywords=laptop&country=US";
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "8fa913baffmshf6dc5b1fa40cc1fp1fdf06jsn365e4c5f0d7f");
-            HttpResponseMessage response = await client.GetAsync(url);
-            string data = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var temp = JsonConvert.DeserializeObject<JArray>(data);
-                
-                wishList.wishListName = (string)temp["title"];
-                wishList.wishListName = (string)temp["price"];
-
-
+                // TODO: Add insert logic here
+                context.WishLists.Add(wishList);
+                context.SaveChanges();
+                string id = User.Identity.GetUserId();
+                var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+                wishList.Id = user.Id;
+                context.SaveChanges();
+                return RedirectToAction("Index","Users");
             }
-            return View();
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: WishLists/Edit/5
