@@ -202,25 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911151438282_InitialMigration.cs" />
-    <Compile Include="Migrations\201911151438282_InitialMigration.designer.cs">
-      <DependentUpon>201911151438282_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911151517309_listofwishlist.cs" />
-    <Compile Include="Migrations\201911151517309_listofwishlist.designer.cs">
-      <DependentUpon>201911151517309_listofwishlist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911151527527_progress.cs" />
-    <Compile Include="Migrations\201911151527527_progress.designer.cs">
-      <DependentUpon>201911151527527_progress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911151546464_pricechangetodecimal.cs" />
-    <Compile Include="Migrations\201911151546464_pricechangetodecimal.designer.cs">
-      <DependentUpon>201911151546464_pricechangetodecimal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911151618173_listofprogress.cs" />
-    <Compile Include="Migrations\201911151618173_listofprogress.designer.cs">
-      <DependentUpon>201911151618173_listofprogress.cs</DependentUpon>
+    <Compile Include="Migrations\201911151926389_redoingmigrations.cs" />
+    <Compile Include="Migrations\201911151926389_redoingmigrations.designer.cs">
+      <DependentUpon>201911151926389_redoingmigrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -325,20 +309,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911151438282_InitialMigration.resx">
-      <DependentUpon>201911151438282_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911151517309_listofwishlist.resx">
-      <DependentUpon>201911151517309_listofwishlist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911151527527_progress.resx">
-      <DependentUpon>201911151527527_progress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911151546464_pricechangetodecimal.resx">
-      <DependentUpon>201911151546464_pricechangetodecimal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911151618173_listofprogress.resx">
-      <DependentUpon>201911151618173_listofprogress.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911151926389_redoingmigrations.resx">
+      <DependentUpon>201911151926389_redoingmigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

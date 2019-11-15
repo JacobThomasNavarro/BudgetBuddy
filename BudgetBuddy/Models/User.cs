@@ -40,7 +40,9 @@ namespace BudgetBuddy.Models
         [Display(Name = "Monthly Income")]
         public decimal monthlyIncome { get; set; }
 
-        
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
 
 
 

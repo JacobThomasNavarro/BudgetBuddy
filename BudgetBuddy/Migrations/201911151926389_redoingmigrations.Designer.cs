@@ -7,13 +7,13 @@ namespace BudgetBuddy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0-preview2-19525-03")]
-    public sealed partial class reccuring : IMigrationMetadata
+    public sealed partial class redoingmigrations : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(reccuring));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(redoingmigrations));
         
         string IMigrationMetadata.Id
         {
-            get { return "201911111607354_reccuring"; }
+            get { return "201911151926389_redoingmigrations"; }
         }
         
         string IMigrationMetadata.Source

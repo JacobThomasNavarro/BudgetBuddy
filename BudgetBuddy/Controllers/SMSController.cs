@@ -9,6 +9,7 @@ using Twilio.Types;
 using Twilio.TwiML;
 using Twilio.AspNet.Mvc;
 using BudgetBuddy.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BudgetBuddy.Controllers
 {
@@ -20,15 +21,15 @@ namespace BudgetBuddy.Controllers
         {
             context = new ApplicationDbContext();
         }
-        public ActionResult SendSMS(WishList wishList)
+        public ActionResult SendSMS(User user)
         {
-            if (wishList.wishListId == wishList.wishListPrice)//we will change this soon to wishlist price == saving price
-            {
-                var accountSid = APIkeys.TwilioaccountSid;
-                var authToken = APIkeys.TwilioauthToken;
+            
+            
+                var accountSid = APIKeys.TwilioaccountSid;
+                var authToken = APIKeys.TwilioauthToken;
                 TwilioClient.Init(accountSid, authToken);
-
-                var to = new PhoneNumber(APIkeys.MySecretNumber);
+                
+                var to = new PhoneNumber("+1" + user.PhoneNumber);
                 var from = new PhoneNumber("+12027409393");
 
                 var message = MessageResource.Create(
@@ -36,8 +37,8 @@ namespace BudgetBuddy.Controllers
                     from: from,
                     body: "One of your wishlist goals has been met! Check back in BudgetBuddy to see what you've saved for!");
                 return Content(message.Sid);
-            }
-            return View(wishList);
+            
+            return View();
         }
     }
 }

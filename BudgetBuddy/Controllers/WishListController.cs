@@ -5,16 +5,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BudgetBuddy.Controllers
 {
     public class WishListController : Controller
     {
         ApplicationDbContext context;
+        SMSController sendText;
 
         public WishListController()
         {
             context = new ApplicationDbContext();
+            sendText = new SMSController();
         }
         // GET: WishList
         public ActionResult Index()
@@ -43,10 +49,10 @@ namespace BudgetBuddy.Controllers
             {
                 
                 temporaryProgress = (userExpenses.TotalSavings.Value / item.wishListPrice) * 100;
-                //if (temporaryProgress >= 100)
-                //{
-                //    TruliotextUser();
-                //}
+                if (temporaryProgress >= item.wishListPrice)
+                {
+                    //sendText.SendSMS(user);    
+                }
                 userExpenses.Progress.Add(temporaryProgress);
                 
             }
@@ -69,24 +75,26 @@ namespace BudgetBuddy.Controllers
 
         // POST: WishLists/Create
         [HttpPost]
-        public ActionResult Create(WishList wishList)
+        public async Task<ActionResult> Create(WishList wishList)
         {
-            try
+            string id = User.Identity.GetUserId();
+            var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+            string url = $"https://google-shopping.p.rapidapi.com/search?language=EN&keywords=laptop&country=US";
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(url);
+            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "8fa913baffmshf6dc5b1fa40cc1fp1fdf06jsn365e4c5f0d7f");
+            HttpResponseMessage response = await client.GetAsync(url);
+            string data = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
             {
-                // TODO: Add insert logic here
-                context.WishLists.Add(wishList);
-                context.SaveChanges();
+                var temp = JsonConvert.DeserializeObject<JArray>(data);
+                
+                wishList.wishListName = (string)temp["title"];
+                wishList.wishListName = (string)temp["price"];
 
-                string id = User.Identity.GetUserId();
-                var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
-                wishList.Id = user.Id;
-                context.SaveChanges();
-                return RedirectToAction("Index");
+
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: WishLists/Edit/5

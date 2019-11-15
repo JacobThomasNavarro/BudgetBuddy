@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class monthlyincome : DbMigration
+    public partial class redoingmigrations : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Users", "monthlyIncome", c => c.Decimal(nullable: false, precision: 18, scale: 2));
+            AddColumn("dbo.Users", "PhoneNumber", c => c.String(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Users", "monthlyIncome");
+            DropColumn("dbo.Users", "PhoneNumber");
         }
     }
 }

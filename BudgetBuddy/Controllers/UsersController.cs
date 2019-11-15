@@ -80,6 +80,7 @@ namespace BudgetBuddy.Controllers
                 editedUser.stateCode = user.stateCode;
                 editedUser.zipcode = user.zipcode;
                 editedUser.monthlyIncome = user.monthlyIncome;
+                editedUser.PhoneNumber = user.PhoneNumber;
                
                 context.SaveChanges();
 
