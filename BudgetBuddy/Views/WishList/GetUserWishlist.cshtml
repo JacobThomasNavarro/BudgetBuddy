@@ -1,40 +1,47 @@
-﻿@model IEnumerable<BudgetBuddy.Models.WishList>
-
+﻿@model BudgetBuddy.Models.UserExpenseViewModel
+@using BudgetBuddy.Models
 @{
     ViewBag.Title = "GetUserWishlist";
 }
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <h2>My Wishlist</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.wishListName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.wishListPrice)
-        </th>
-        <th></th>
-    </tr>
+<table>
+    <thead>
+        <tr>
+            <th>
+                <label>@Html.DisplayNameFor(model => model.WishlistItems[0].wishListName)</label>
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.wishListName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.wishListPrice)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.wishListId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.wishListId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.wishListId })
-        </td>
-    </tr>
-}
-
+            <th>
+                <label>@Html.DisplayNameFor(model => model.WishlistItems[0].wishListPrice)</label>
+            </th>
+        </tr>
+    </thead>
 </table>
+
+@for (int i = 0; i < Model.WishlistItems.Count; i++)
+{
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.WishlistItems[i].wishListName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.WishlistItems[i].wishListPrice)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div class="w3-red w3-xlarge w3-round">
+                    <div class="w3-container w3-round w3-green" style="width:@Model.Progress[i]%">@Model.Progress[i].ToString()%</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+}
+<p>Total Amount of Bills Being Saved: $@Model.TotalSavings  </p>
+
+
 <p> @Html.ActionLink("Back To Details", "Index", "Home")</p>

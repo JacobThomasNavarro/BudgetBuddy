@@ -19,7 +19,7 @@ namespace BudgetBuddy.Models
         [Required]
         [DataType(DataType.Currency)]
         [Display(Name = "Wish List Price")]
-        public double wishListPrice { get; set; }
+        public decimal wishListPrice { get; set; }
 
         [ForeignKey("User")]
         public int? Id { get; set; }

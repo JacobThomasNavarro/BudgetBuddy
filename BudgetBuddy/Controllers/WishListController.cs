@@ -23,12 +23,35 @@ namespace BudgetBuddy.Controllers
         }
         public ActionResult GetUserWishlist()
         {
+            decimal temporaryProgress = 0;
+            
+            UserExpenseViewModel userExpenses = new UserExpenseViewModel() { TotalExpenses = 0, TotalSavings = 0, WishlistItemPrice = 0};
             string id = User.Identity.GetUserId();
             var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
-            var wishlist = context.WishLists.Where(e => e.Id == user.Id).ToList();
-
-
-            return View(wishlist);
+            userExpenses.Expenses = context.Expenses.Where(e => e.Id == user.Id).ToList();
+            userExpenses.WishlistItems = context.WishLists.Where(e => e.Id == user.Id).ToList();
+            foreach (Expense item in userExpenses.Expenses)
+            {
+                if (item.savingPercentage != null)
+                {
+                    userExpenses.TotalSavings += (item.savingPercentage / 100) * item.billPrice;
+                }
+            }
+            userExpenses.TotalSavings = Decimal.Round(userExpenses.TotalSavings.Value, 2);
+            userExpenses.Progress = new List<decimal>();
+            foreach (WishList item in userExpenses.WishlistItems)
+            {
+                
+                temporaryProgress = (userExpenses.TotalSavings.Value / item.wishListPrice) * 100;
+                //if (temporaryProgress >= 100)
+                //{
+                //    TruliotextUser();
+                //}
+                userExpenses.Progress.Add(temporaryProgress);
+                
+            }
+            
+            return View(userExpenses);
         }
         // GET: WishLists/Details/5
         public ActionResult Details(int id)
