@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -13,12 +13,14 @@
                     {
                         expenseId = c.Int(nullable: false, identity: true),
                         billName = c.String(nullable: false),
-                        billPrice = c.Int(nullable: false),
+                        billPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         purchaseDate = c.DateTime(nullable: false),
-                        Id = c.Int(nullable: false),
+                        recurringExpense = c.Boolean(nullable: false),
+                        savingPercentage = c.Decimal(precision: 18, scale: 2),
+                        Id = c.Int(),
                     })
                 .PrimaryKey(t => t.expenseId)
-                .ForeignKey("dbo.Users", t => t.Id, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.Id)
                 .Index(t => t.Id);
             
             CreateTable(
@@ -33,6 +35,7 @@
                         city = c.String(nullable: false),
                         stateCode = c.String(nullable: false),
                         zipcode = c.Int(nullable: false),
+                        monthlyIncome = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ApplicationId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
@@ -107,16 +110,31 @@
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
+            CreateTable(
+                "dbo.WishLists",
+                c => new
+                    {
+                        wishListId = c.Int(nullable: false, identity: true),
+                        wishListName = c.String(nullable: false),
+                        wishListPrice = c.Double(nullable: false),
+                        Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.wishListId)
+                .ForeignKey("dbo.Users", t => t.Id)
+                .Index(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.WishLists", "Id", "dbo.Users");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Expenses", "Id", "dbo.Users");
             DropForeignKey("dbo.Users", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropIndex("dbo.WishLists", new[] { "Id" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -125,6 +143,7 @@
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Users", new[] { "ApplicationId" });
             DropIndex("dbo.Expenses", new[] { "Id" });
+            DropTable("dbo.WishLists");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
