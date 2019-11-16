@@ -77,6 +77,7 @@ namespace BudgetBuddy.Controllers
         [HttpPost]
         public async Task<ActionResult> Search(WishList wishList)
         {
+           
             string id = User.Identity.GetUserId();
             var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
             string url = $"https://google-shopping.p.rapidapi.com/search?language=EN&keywords={wishList.wishListName}&country=US";
@@ -87,15 +88,34 @@ namespace BudgetBuddy.Controllers
             string data = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                for (int i = 0; i < data.Length; i++)
-                {
-                    GoogleWishListItem googleWishListItem = JsonConvert.DeserializeObject<GoogleWishListItem>(data);
-                }
+                Class1[] googleWishListItems = JsonConvert.DeserializeObject<Class1[]>(data);
+
+
+                
                 
 
+                return View("SearchResults", googleWishListItems);
 
             }
-            return View();
+            return View("SearchResults","WishList");
+        }
+        public ActionResult SearchResults(Class1[] googleWishListItem)
+        {
+            
+            return View(googleWishListItem);
+        }
+        public ActionResult UpdateWishlistItem(string name, float price)
+        {
+            string id = User.Identity.GetUserId();
+            var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+            WishList wishList = new WishList();
+            wishList.wishListName = name;
+            wishList.wishListPrice = (decimal)price;
+            wishList.Id = user.Id;
+            context.WishLists.Add(wishList);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+
         }
         // GET: WishLists/Create
         public ActionResult Create()

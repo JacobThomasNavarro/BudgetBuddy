@@ -292,6 +292,7 @@
     <Content Include="Views\Expenses\GetUserExpenses.cshtml" />
     <Content Include="Views\WishList\GetUserWishlist.cshtml" />
     <Content Include="Views\WishList\Search.cshtml" />
+    <Content Include="Views\WishList\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
