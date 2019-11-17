@@ -53,6 +53,11 @@ namespace BudgetBuddy.Controllers
                 {
                     //sendText.SendSMS(user);    
                 }
+                if(temporaryProgress >= 100)
+                {
+                    temporaryProgress = 100;
+                }
+                temporaryProgress = decimal.Round(temporaryProgress, 0);
                 userExpenses.Progress.Add(temporaryProgress);
                 
             }
@@ -188,7 +193,31 @@ namespace BudgetBuddy.Controllers
                 WishList deleteWishList = context.WishLists.Where(w => w.wishListId == id).FirstOrDefault();
                 context.WishLists.Remove(deleteWishList);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Users");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Purchase(int id)
+        {
+            WishList wishList = context.WishLists.Where(w => w.wishListId == id).FirstOrDefault();
+            return View(wishList);
+        }
+
+        // POST: WishLists/Delete/5
+        [HttpPost]
+        public ActionResult Purchase(int id, WishList wishList)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                WishList deleteWishList = context.WishLists.Where(w => w.wishListId == id).FirstOrDefault();
+                context.WishLists.Remove(deleteWishList);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Users");
             }
             catch
             {

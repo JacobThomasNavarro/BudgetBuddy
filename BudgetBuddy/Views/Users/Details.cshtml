@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Model.firstName @Model.lastName</h2>
 
 <div>
-    <h4>User</h4>
+    <h4>Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -85,16 +85,23 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index") |
 
-    @Html.ActionLink("View Expenses and Calculate Savings", "GetUserExpenses", "Expenses") |
-    @Html.ActionLink("Enter Expense", "Create", "Expenses") |
-
-    @Html.ActionLink("View Wishlist", "GetUserWishlist", "Wishlist") |
-    @Html.ActionLink("Enter Wishlist Item", "Create", "WishList") |
-
+<div>
+    @Html.ActionLink("Edit Your Details", "Edit", new { id = Model.Id })     
+</div>
+<div>
+    @Html.ActionLink("View Expenses and Calculate Savings", "GetUserExpenses", "Expenses") 
+    
+</div>
+<div>
+    @Html.ActionLink("Enter Expense", "Create", "Expenses") 
+</div>
+<div>
+    @Html.ActionLink("View Wishlist", "GetUserWishlist", "Wishlist") 
+</div>
+<div>    
+    @Html.ActionLink("Enter Specific Wishlist Item", "Create", "WishList") 
+</div>
+<div>
     @Html.ActionLink("Search For A Wishlist Item", "Search", "WishList")
-
-</p>
+</div>

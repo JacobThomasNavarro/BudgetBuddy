@@ -4,41 +4,43 @@
     ViewBag.Title = "GetUserWishlist";
 }
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<h2>My Wishlist</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                <label>@Html.DisplayNameFor(model => model.WishlistItems[0].wishListName)</label>
-            </th>
+<h2 align="center">My Wishlist Items</h2>
 
-            <th>
-                <label>@Html.DisplayNameFor(model => model.WishlistItems[0].wishListPrice)</label>
-            </th>
-        </tr>
-    </thead>
-</table>
 
 @for (int i = 0; i < Model.WishlistItems.Count; i++)
 {
     <table>
-        <tr>
+        
+        <tr align="center">
             <td>
                 @Html.DisplayFor(modelItem => Model.WishlistItems[i].wishListName)
+                
             </td>
+        </tr>
+        <tr align="center">
             <td>
                 @Html.DisplayFor(modelItem => Model.WishlistItems[i].wishListPrice)
+                
             </td>
-
+            
         </tr>
         <tr>
             <td>
-                <div class="w3-red w3-xlarge w3-round">
-                    <div class="w3-container w3-round w3-green" style="width:@Model.Progress[i]%">@Model.Progress[i].ToString()%</div>
+                @Html.ActionLink("Click To Delete", "Delete", new { id = Model.WishlistItems[i].wishListId })
+                @Html.ActionLink("Click To Purchase", "Purchase", new { id = Model.WishlistItems[i].wishListId })
+            </td>
+            
+        </tr>
+        <tr>
+            <td width="1%">
+                <div class="progress w3-red">
+                    <div class="progress-bar bg-success w3-green" role="progressbar" aria-valuemax="100" aria-valuemin="0" aria-valuenow="@Model.Progress[i].ToString()" style="width:@Model.Progress[i].ToString()%">@Model.Progress[i].ToString()%</div>
                 </div>
+
             </td>
         </tr>
+
     </table>
 
     <script>
@@ -51,7 +53,9 @@
 
     </script>
 }
-<p>Total Amount of Bills Being Saved: $@Model.TotalSavings  </p>
+<br />
+
+<p align="center">Total Amount of Bills Being Saved: $@Model.TotalSavings  </p>
 
 
 <p> @Html.ActionLink("Back To Details", "Index", "Home")</p>
