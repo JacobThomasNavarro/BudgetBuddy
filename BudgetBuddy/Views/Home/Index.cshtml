@@ -2,30 +2,45 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <div class="jumbotron">
+        <img src="~/Content/Image/dollar-sign-symbol-24.gif" align="right" />
+        <h1>Budget Buddy</h1>
+        <br />
+        <br />
+        <br />
+        <br />
+        <p class="lead">Budget Buddy is here to save you some money. Below are some free financial calculators.</p>
+       
+        
 
+    </div>
+<h2 align="center" >Financial Calculators</h2>
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <div class="omni-calculator" data-calculator="finance/dream-come-true" data-width="300" data-config='{"r":{"advanced":true}}' data-currency="USD" data-show-row-controls="false" data-version="3" data-t="1574022908530">
+            <div class="omni-calculator-header">Dream Savings Calculator</div>
+            <div class="omni-calculator-footer">
+                <a href="https://www.omnicalculator.com/finance/dream-come-true" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+            </div>
+        </div>
+        <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <div class="omni-calculator" data-calculator="finance/auto-loan" data-width="300" data-config='{}' data-currency="USD" data-show-row-controls="false" data-version="3" data-t="1574022959768">
+            <div class="omni-calculator-header">Auto Loan Calculator</div>
+            <div class="omni-calculator-footer">
+                <a href="https://www.omnicalculator.com/finance/auto-loan" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+            </div>
+        </div>
+        <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <div class="omni-calculator" data-calculator="finance/credit-card-payoff" data-width="300" data-config='{}' data-currency="USD" data-show-row-controls="false" data-version="3" data-t="1574023009438">
+            <div class="omni-calculator-header">Credit Card Payoff Calculator</div>
+            <div class="omni-calculator-footer">
+                <a href="https://www.omnicalculator.com/finance/credit-card-payoff" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+            </div>
+        </div>
+        <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
     </div>
 </div>

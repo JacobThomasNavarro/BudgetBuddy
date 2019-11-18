@@ -23,7 +23,7 @@ namespace BudgetBuddy
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-A.css",
                       "~/Content/site.css"));
         }
     }

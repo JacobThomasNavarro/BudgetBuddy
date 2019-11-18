@@ -27,8 +27,12 @@
         </tr>
         <tr>
             <td>
-                @Html.ActionLink("Click To Delete", "Delete", new { id = Model.WishlistItems[i].wishListId })
-                @Html.ActionLink("Click To Purchase", "Purchase", new { id = Model.WishlistItems[i].wishListId })
+                @Html.ActionLink("Click To Delete", "Delete", new { id = Model.WishlistItems[i].wishListId }) 
+                @if (Model.WishlistItems[i].wishListPrice <= Model.TotalSavings)
+                {
+                   @Html.ActionLink(" | Click To Purchase", "Purchase", new { id = Model.WishlistItems[i].wishListId })
+                }
+
             </td>
             
         </tr>

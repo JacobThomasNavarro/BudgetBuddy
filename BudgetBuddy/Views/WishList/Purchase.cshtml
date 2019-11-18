@@ -1,5 +1,5 @@
 ﻿@model BudgetBuddy.Models.WishList
-
+@using BudgetBuddy.Models
 @{
     ViewBag.Title = "Purchase";
 }
@@ -34,9 +34,12 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Purhcase" class="btn btn-default" /> 
+            <input type="submit" value="Purchase" class="btn btn-default" /> 
 
         </div>
         <p> @Html.ActionLink("Back To Details", "Index", "Home")</p>
     }
 </div>
+@{ 
+    
+}

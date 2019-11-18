@@ -128,7 +128,7 @@ namespace BudgetBuddy.Controllers
                 Expense expenseToDelete = context.Expenses.Where(e => e.expenseId == id).FirstOrDefault();
                 context.Expenses.Remove(expenseToDelete);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

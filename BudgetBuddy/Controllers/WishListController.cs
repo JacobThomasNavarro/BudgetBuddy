@@ -142,7 +142,7 @@ namespace BudgetBuddy.Controllers
                 var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
                 wishList.Id = user.Id;
                 context.SaveChanges();
-                return RedirectToAction("Index","Users");
+                return RedirectToAction("Index","Home");
             }
             catch
             {
@@ -193,7 +193,7 @@ namespace BudgetBuddy.Controllers
                 WishList deleteWishList = context.WishLists.Where(w => w.wishListId == id).FirstOrDefault();
                 context.WishLists.Remove(deleteWishList);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Users");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
@@ -217,7 +217,7 @@ namespace BudgetBuddy.Controllers
                 WishList deleteWishList = context.WishLists.Where(w => w.wishListId == id).FirstOrDefault();
                 context.WishLists.Remove(deleteWishList);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Users");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
